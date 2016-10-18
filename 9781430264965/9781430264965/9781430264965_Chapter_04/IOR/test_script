@@ -1,0 +1,20 @@
+IOR START
+# MPIIO shared file test
+    reordertasksconstant=1 # defeat buffer cache for read after write by reordering tasks
+    fsync=1 # call fsync for POSIX I/O before close
+    intraTestBarriers=1 # use barriers between open/read/write/close
+    repetitions=2
+    verbose=2
+    keepFile=0
+    segmentCount=10000
+    blockSize=1000000
+
+    fsync=0
+    filePerProc=0
+    api=MPIIO # Compare MPIIO to POSIX shared
+    collective=1 # enables data shipping optimization
+    testFile = IOR_MPIIO_Test # File name
+    transferSize=100000 # I/O call size
+    RUN
+IOR STOP
+
